@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Clienta
+Bundle-SymbolicName: pontus.osgi.clienta
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pontus.osgi.clienta.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.osgi;bundle-version="3.7.2"
+Require-Bundle: org.eclipse.osgi;bundle-version="3.9.0"
+Import-Package: org.osgi.framework;version="1.6.0", pontus.osgi.fibonacci

@@ -1,29 +1,32 @@
-workspaceWorking
+Pontus egna ord och instruktioner för körning
 ================
 
-Detta är den fungerande versionen av mitt program där problemet är löst utan att applicera någon utav de listade möjliga vidareutvecklingarna.
+Detta är den fungerande versionen av mitt program där fibonacci problemet är löst enligt specifikation men utan att applicera någon av de listade vidareutvecklingarna (gjort ett försök). Eftersom jag inte har någon erfarenhet av OSGi ramverket sedan innan har en hel del tid ägnats åt att skaffa förståelse för ramverket samt få rätt på alla kringliggande moduler som måste fungera för att till slut få en utskrift. Modulerna skrevs i Eclipse IDE som har bra stöd för Equinox.
 
-Projektet består utav fyra bundles: 
-pontus.osgi.fibonacci - Här ligger service interfacet
-pontus.osgi.fibonacciservice - Detta är logiken/modelen som tillhandahåller de olika fibonaccitalen 
-pontus.osgi.clienta och pontus.osgi.clienta - Klienterna som tar vars fyra fibonaccital och skriver ut dessa.
+Projektet består utav fyra plugins:<br/>
+pontus.osgi.fibonacci - Här ligger service interfacet<br/>
+pontus.osgi.fibonacciservice - Detta är logiken/modellen som tillhandahåller de olika fibonaccitalen<br/>
+pontus.osgi.clienta och pontus.osgi.clientb - Klienterna som tar vars fyra fibonaccital och skriver ut dessa i System.out
 
-Anledningen till att jag lade interfacet och logiken i två olika bundles motiverar jag med att man enkelt ska kunna byta ut hur fibonaccitalen genereras. Vidare så består fibonacciservice av en klass där uträkningen sker kopplat till en Activator klass. Mina klienter använder samma struktur som fibonacciservice men där jag valde att tråda klienterna så att de kontinuerligt kunde komma åt fibonacciservice.
+Anledningen till att jag placerade interfacet och logiken i två olika plugins motiverar jag med att man enkelt ska kunna byta ut hur fibonaccitalen genereras (mot en effektivare modell om möjligt). Vidare så består fibonacciservice utav två paket med en klass vardera. Uträkningen sker i MyFibonacciService.java som sedan är kopplat till en Activator.java klass för att starta och stoppa pluginet. Mina klienter använder samma struktur som fibonacciservice men där jag valde att tråda klienterna för att snyggare komma åt getNextFib().
 
-Med tanken på att kunna göra någon utav de listade vidareutvecklingarna så använde jag mig av felix-framework vid körning. Jag har påbörjat vidareutvecklingen för möjligheten att dynamiskt kunna konfigurera pontus.osgi.fibonacciservice under körning för att bestämma hur många tal vardera klient ska kunna erhålla. Jag var påväg att konvertera pontus.osgi.fibonacciservice till en ManagedService vars update-metod skulle läsa in en config-fil som genererades utav ett Configuration Admin objekt. På grund av tidsbristen han jag endast läst på men inte riktigt imlementerat denna lösning men jag har har fått en god uppfattning om hur jag ska gå tillväga.
+Med vidareutvecklingarna i bakhuvudet så använde jag mig av felix-framework vid körning. Jag har påbörjat vidareutvecklingen för möjligheten att dynamiskt kunna konfigurera pontus.osgi.fibonacciservice under körning. Jag var på väg att konvertera pontus.osgi.fibonacciservice till en ManagedService där tanken var att update-metoden skulle läsa in en en konfugiration som i sin tur genererades utav ett Configuration Admin objekt. Detta skulle genomföras med hjälp av ett  Felix file installer plugin. På grund av tidsbristen hann jag endast läsa på och få mig en god uppfattning om konfigurering möjligheterna men jag hann inte riktigt med att implementera klart lösningen.
 
+Jag valde att lägga vidareutvecklingen av konfigurationslösningen i en annan repository (https://github.com/Peppson/workspace.git) eftersom att jag inte kom så långt pga. tisdbristen.
 
-Körinstruktioner--------------------------
+Körinstruktioner
+================================================================================
 
-För att köra programmet så använde jag mig av felix-framework-4.2.1. I felix-framework-4.2.1 skapade jag en map deploy.
+För att köra programmet så använde jag mig av felix-framework-4.2.1 vilket laddas ner från http://felix.apache.org/downloads.cgi som en zip och packas upp på valfri destination. I mappen /felix-framework-4.2.1 skapade jag en map deploy.
 
-Körinstruktioner:
+Steg för steg:
 1. Exportera projektets filer som plugins/bundles till ..path/felix-framework-4.2.1/deploy
 2. Kör kommandotolken i ..dir/felix-framework-4.2.1 (jag kör windows)
 3. I kommandotolken kör kommandot: -Dfelix.fileinstall.dir=./deploy -jar bin/felix.jar
-4. Lista alla installerade bundles med kommandot felix:lb för att se vilket id de installerade pluginen har blitvit tilldelade 
-5. Kör igång pluginen med felix:start plugin-id där pluginen startas i ordningen felix:start:"id för fibonacci" "id för fibonacciservice" "id för clienta" "id för clientb"
+4. Lista alla installerade bundles med kommandot felix:lb för att se vilket id de installerade pluginen har blivit tilldelade 
+5. Kör igång pluginen med felix:start "plugin-id" där pluginen startas i ordningen felix:start:"id för fibonacci" "id för fibonacciservice" "id för clienta" "id för clientb"
 6. Skåda den vackra utskriften
 
+Mvh Pontus Johansson
 
 

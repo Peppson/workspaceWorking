@@ -17,7 +17,7 @@ Jag valde att lägga vidareutvecklingen av konfigurationslösningen i en annan r
 Körinstruktioner
 ================================================================================
 
-För att köra programmet så använde jag mig av felix-framework-4.2.1 vilket laddas ner från http://felix.apache.org/downloads.cgi som en zip och packas upp på valfri destination. I mappen /felix-framework-4.2.1 skapade jag en map deploy.
+Förarbete:<br/>För att köra programmet så använde jag mig av felix-framework-4.2.1 vilket laddas ner från http://felix.apache.org/downloads.cgi som en zip och packas upp på valfri destination. I mappen /felix-framework-4.2.1 skapade jag en map deploy. Ladda hem filen org.apache.felix.fileinstall-3.2.6.jar från http://felix.apache.org/downloads.cgi och placera denna i ..\felix-framework-4.2.1\bundle.
 
 Steg för steg:<br/>
 1. Exportera projektets filer som plugins/bundles till ..path/felix-framework-4.2.1/deploy<br/>

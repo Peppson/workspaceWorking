@@ -1,10 +1,10 @@
-Pontus egna ord och instruktioner för körning
+Instruktioner för körning
 ================
 
-Detta är den fungerande versionen av mitt program där fibonacci problemet är löst enligt specifikation men utan att applicera någon av de listade vidareutvecklingarna (gjort ett försök). Eftersom jag inte har någon erfarenhet av OSGi ramverket sedan innan har en hel del tid ägnats åt att skaffa förståelse för ramverket samt få rätt på alla kringliggande moduler som måste fungera för att till slut få en utskrift. Modulerna skrevs i Eclipse IDE som har bra stöd för Equinox.
+Detta är den fungerande versionen av mitt program där fibonacci-problemet är löst enligt specifikation. Eftersom jag inte har någon erfarenhet av OSGi-ramverket sedan innan har en hel del tid ägnats åt att skaffa förståelse för ramverket samt få rätt på alla kringliggande moduler som måste fungera för att till slut få en utskrift. Modulerna skrevs i Eclipse IDE som har bra stöd för Equinox.
 
 Projektet består utav fyra plugins:<br/>
-pontus.osgi.fibonacci - Här ligger service interfacet<br/>
+pontus.osgi.fibonacci - Här ligger service-interfacet<br/>
 pontus.osgi.fibonacciservice - Detta är logiken/modellen som tillhandahåller de olika fibonaccitalen<br/>
 pontus.osgi.clienta och pontus.osgi.clientb - Klienterna som tar vars fyra fibonaccital och skriver ut dessa i System.out
 
